@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-
+import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
 
 contract ContestPrize is Ownable {
     constructor() Ownable(msg.sender) {}
@@ -19,12 +19,17 @@ contract ContestPrize is Ownable {
 
     event signupcompleted(uint256 indexed ID, address indexed user);
 
+    modifier ChecknotexistId(uint id) {
+        require(!Components[id].exist, "this ID is already exist");
+        _;
+    }
+
 
     // This function is used to define a contest and takes the ID and cost of participating in the contest.
     function Addcomp(
         uint256 _ID,
         uint256 _Price , uint256 _totalprize
-    ) external {
+    ) external onlyOwner ChecknotexistId(_ID) whenNotPaused  {
         if (_Price == 0 ){
             Components[_ID] = comp(_totalprize, 0, true, true);
         }
