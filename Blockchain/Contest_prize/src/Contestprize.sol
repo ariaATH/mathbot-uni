@@ -65,12 +65,9 @@ contract ContestPrize is Ownable, Pausable, ReentrancyGuard {
     emit signupcompleted(_ID, msg.sender);
     }
 
-    function pause() external onlyOwner {
-        _pause();
-    }
-    // if contract is paused, no one can enter the competition
-    function unpause() external onlyOwner {
-        _unpause();
+    // owner should call this if the contest is free
+    function addbudgeforfreecomp(uint256 _ID) external payable onlyOwner CheckexistID(_ID) whenNotPaused {
+        require(msg.value == Components[_ID].Total_amount, "Must send ETH");
     }
 
     // Internal function to safely transfer Ether
@@ -98,5 +95,13 @@ contract ContestPrize is Ownable, Pausable, ReentrancyGuard {
         _safetransfer(_Third, (award * 10) / 100);
         Components[_ID].Total_amount -= (10 * award) / 100 ;
         emit WinnersAwarded(_ID, _first, _second, _Third);
+    }
+
+    function pause() external onlyOwner {
+        _pause();
+    }
+    // if contract is paused, no one can enter the competition
+    function unpause() external onlyOwner {
+        _unpause();
     }
 }
