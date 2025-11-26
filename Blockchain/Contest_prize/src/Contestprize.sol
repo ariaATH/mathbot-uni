@@ -24,6 +24,16 @@ contract ContestPrize is Ownable, Pausable {
         _;
     }
 
+    modifier CheckActive(uint id) {
+        require(Components[id].status == true, "component finished");
+        _;
+    }
+
+    modifier CheckexistID(uint id) {
+        require(Components[id].exist, "this ID is not exist");
+        _;
+    }
+
 
     // This function is used to define a contest and takes the ID and cost of participating in the contest.
     function Addcomp(
@@ -40,7 +50,7 @@ contract ContestPrize is Ownable, Pausable {
     }
 
     // this function is for user signup in a contest user should call 
-    function signup(uint256 _ID) external payable {
+    function signup(uint256 _ID) external payable CheckexistID(_ID) CheckActive(_ID) whenNotPaused{
     uint256 price = Components[_ID].Price;
     require(msg.value == price, "Incorrect ETH amount");
 
