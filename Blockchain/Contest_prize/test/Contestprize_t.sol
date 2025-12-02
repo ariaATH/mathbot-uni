@@ -55,4 +55,5 @@ contract ContestprizeTest is Test {
           assertEq(_testaddress3.balance , 10 ether);
          
    }
+
 }

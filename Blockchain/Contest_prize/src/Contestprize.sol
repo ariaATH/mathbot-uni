@@ -97,6 +97,17 @@ contract Contestprize is Ownable, Pausable, ReentrancyGuard {
         emit WinnersAwarded(_ID, _first, _second, _Third);
     }
 
+    // This function is for withdrawing the organizer's share of the prize after the competition ends.
+    function withdrawOwner(
+        address payable _to,
+        uint256 _ID
+    ) external onlyOwner CheckexistID(_ID) nonReentrant whenNotPaused {
+        require(Components[_ID].status == false, "Components is not over");
+        uint256 amount = Components[_ID].Total_amount;
+        Components[_ID].Total_amount = 0;
+        _safetransfer(_to, amount);
+    }
+
     function pause() external onlyOwner {
         _pause();
     }
