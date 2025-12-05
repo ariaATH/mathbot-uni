@@ -36,6 +36,13 @@
             margin: 0;
             padding: 0;
             list-style: none;
+            .colored-icon {
+              color: #26A58F !important;
+              margin-left: 8px;
+             font-size: 1.4rem;
+        }
+
+            
             
 
             li {
@@ -43,17 +50,20 @@
                 font-size: 1.8rem;
                 color: #fff;
                /* border-bottom: 1px solid #f1f1f1;*/
+            
 
                 strong {
                     color: #fff;
                     font-weight: 500;
                     padding-left: 10px;
                 }
+               
 
                 &:last-child {
                     border-bottom: none;
                 }
             }
+            
             li.rules-download {
             cursor: pointer;
             color: #fff;
@@ -63,9 +73,12 @@
             &:hover {
                 color: #26A58F;
             }
+            
         }
         }
     }
+    
+
 
     /* Join Box */
     .join-box {

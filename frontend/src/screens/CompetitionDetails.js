@@ -19,7 +19,7 @@ function CompetitionDetails() {
         }
 
         const link = document.createElement("a");
-        link.href = contest.pdf_rules;  // backend link or test link
+        link.href = contest.pdf_rules;  
         link.download = "";
         link.click();
     };
@@ -150,12 +150,12 @@ function CompetitionDetails() {
                             <h3>{contest.title}</h3>
                             <ul>
 
-                                <li><strong> {contest.location}</strong><i class="fas fa-map-marker-alt"></i></li>
-                                <li><strong> {contest.date}</strong><i class="fas fa-calendar-alt"></i></li>
-                                <li><strong> {contest.time} </strong><i class="fas fa-clock"></i></li>
-                                <li><strong> {contest.prize} for winner!</strong><i class="fas fa-trophy"></i></li>
+                                <li><strong> {contest.location}</strong><i class="fas fa-map-marker-alt colored-icon"></i></li>
+                                <li><strong> {contest.date}</strong><i class="fas fa-calendar-alt colored-icon"></i></li>
+                                <li><strong> {contest.time} </strong><i class="fas fa-clock colored-icon"></i></li>
+                                <li><strong> {contest.prize} for winner!</strong><i class="fas fa-trophy colored-icon"></i></li>
                                 <li className="rules-download" onClick={handleDownloadRules}>
-                                    <strong>Contest-Rules.pdf</strong><i class="fas fa-scroll"></i>
+                                    <strong>Contest-Rules.pdf</strong><i class="fas fa-scroll colored-icon"></i>
 
                                 </li>
                             </ul>
