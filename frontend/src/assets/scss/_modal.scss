@@ -1,31 +1,39 @@
+/* ---------- BACKDROP ---------- */
 .modal-backdrop {
   position: fixed;
-  inset: 0; /* top right bottom left = 0 */
-  background: rgba(0, 0, 0, 0.6)!important;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35)!important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
+
+/* ---------- MODAL ---------- */
 .contest-modal {
   background: #ffffff;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 12px;
   width: 100%;
   max-width: 420px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35)!important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   position: relative;
-  animation: scaleIn 0.2s ease-out;
-  
-    .h2 {
+  animation: scaleIn 0.25s ease-out;
   color: #111;
-  margin-bottom: 16px;
 
+  h2 {
+    text-align: center;
+    margin-bottom: 18px;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #111;
   }
 }
 
-/* animation */
+/* ---------- ANIMATION ---------- */
 @keyframes scaleIn {
   from {
     transform: scale(0.9);
@@ -37,44 +45,128 @@
   }
 }
 
+/* ---------- CLOSE BUTTON ---------- */
 .close-btn {
   position: absolute;
-  top: 12px;
-  right: 14px;
+  top: 14px;
+  right: 16px;
   font-size: 22px;
-  border: none;
   background: none;
+  border: none;
+  color: #444;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-input {
+.close-btn:hover {
+  color: #000;
+}
+
+/* ---------- INPUT ---------- */
+.contest-modal input {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 11px 12px;
   margin-bottom: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.contest-modal input:focus {
+  outline: none;
+  border-color: #29a58d;
+  box-shadow: 0 0 0 2px rgba(41, 165, 141, 0.2);
+}
+
+/* ---------- BUTTON ---------- */
 .wallet-btn {
   width: 100%;
-  padding: 12px;
-  margin-top: 5px;
-  border-radius: 6px;
+  padding: 13px;
+  border-radius: 8px;
   background: #29a58d;
-  color: #fff;
+  color: #ffffff;
   border: none;
-  cursor: pointer;
   font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .wallet-btn:hover {
-  background: #1b7c69;
+  background: #1f8a76;
 }
 
-.wallet-ok {
-  text-align: left;
-  margin-top: 10px;
-  font-size: 14px;
-  color: #26816f;
+.wallet-btn:active {
+  transform: scale(0.98);
+}
+
+.wallet-btn:disabled {
+  background: #9fd4c9;
+  cursor: not-allowed;
+}
+
+/* ---------- STATUS TEXT ---------- */
+.status-text {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #1f8a76;
+}
+
+/* ---------- SUCCESS ---------- */
+.success-box {
+  margin-top: 20px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+
+  p {
+    font-size: 22px;
+    font-weight: 700;
+    color: #29a58d;
+    margin-bottom: 12px;
+  }
+
+  small {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #6b6b6b;
+  }
+}
+
+.code-box {
+  padding: 14px;
+  background: #29a58d;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  user-select: all;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(41, 165, 141, 0.45);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-icon {
+  display: inline-block;
+  color: #29a58d; /* رنگ اصلی پروژه */
+  font-size: 28px;
+  margin-right: 8px;
+  vertical-align: middle;
 }
