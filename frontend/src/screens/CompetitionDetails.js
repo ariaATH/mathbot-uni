@@ -53,19 +53,22 @@ function CompetitionDetails() {
               <h3>{contest.title}</h3>
                             <ul>
                 <li>
-                  <strong>{contest.location}</strong>
+                  <strong>{contest.location}</strong><i class="fas fa-map-marker-alt colored-icon"></i>
                 </li>
                 <li>
-                  <strong>{contest.date}</strong>
+                  <strong>{contest.date}</strong><i class="fas fa-calendar-alt colored-icon"></i>
                 </li>
                 <li>
-                  <strong>{contest.time}</strong>
+                  <strong>{contest.time}</strong><i class="fas fa-clock colored-icon"></i>
                 </li>
                 <li>
-                  <strong>{contest.prize} for winner</strong>
+                  <strong><i class="fab fa-ethereum colored-icon "></i> for winner : {contest.prize} </strong><i class="fas fa-trophy colored-icon"></i>
+                </li>
+                <li>
+                  <strong><i class="fab fa-ethereum colored-icon "></i> Registration fee : {contest.registration_price}</strong><i class="fas fa-coins colored-icon"></i>
                 </li>
                                 <li className="rules-download" onClick={handleDownloadRules}>
-                  <strong>Contest Rules (PDF)</strong>
+                  <strong>Contest Rules (PDF)</strong><i class="fas fa-scroll colored-icon"></i>
                                 </li>
                             </ul>
                         </section>

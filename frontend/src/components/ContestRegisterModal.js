@@ -75,7 +75,7 @@ function ContestRegisterModal({ onClose }) {
     >
       {code}
     </div>
-    <small>Click to copy</small>
+    <small>Click to copy your transaction ID</small>
   </div>
 )}
 
